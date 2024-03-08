@@ -1,7 +1,7 @@
 import React from "react";
 import EventCard from "./EventCard";
 
-const DayEvent = ({ day }) => {
+const DayEvent = ({ day, eventsData }) => {
   return (
     <div className="flex flex-col mt-[10rem] justify-center items-center">
       <span
@@ -22,12 +22,13 @@ const DayEvent = ({ day }) => {
             "linear-gradient(to left, transparent, rgba(255,255,255,0.1), transparent)",
         }}
       />
-      <div className="w-[80%] p-5 flex gap-10 overflow-auto">
-        {[1, 1, 1, 1, 1].map((_, index) => (
-          <div key={`day1-${index}`}>
-            <EventCard />
-          </div>
-        ))}
+      <div className="w-full p-5 flex gap-10 overflow-auto">
+        {eventsData &&
+          eventsData.map((data, index) => (
+            <div key={`day1-${index}`}>
+              <EventCard data={data} />
+            </div>
+          ))}
       </div>
       <hr
         className="w-[80%] h-[1px] border-none my-5"

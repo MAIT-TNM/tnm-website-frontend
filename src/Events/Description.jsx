@@ -2,9 +2,12 @@ import React from "react";
 import { useParams } from "react-router";
 import eventImg from "../images/event.jpg";
 import banner from "../images/banner.jpg";
+import { useLocation } from "react-router";
 
 const Description = () => {
   const { event } = useParams();
+  const location = useLocation();
+  console.log(location.state);
   return (
     <div
       className="text-white w-full h-[100vh] flex justify-center items-center pt-[90px] overflow-y-auto shadow-2xl"

@@ -12,7 +12,8 @@ import Faculty from "./Faculty/Faculty";
 import Schedule from "./Schedule/Schedule";
 import Contact from "./Contact/Contact";
 import Description from "./Events/Description";
-import Footer from "./components/Footer";
+import Login from "./Login/Login";
+import Register from "./Register/Register";
 
 const MainLayout = () => (
   <Layout>
@@ -38,6 +39,8 @@ const router = createBrowserRouter([
         element: <Events />,
       },
       { path: ":event", element: <Description /> },
+      { path: "login", element: <Login /> },
+      { path: "register", element: <Register /> },
     ],
   },
 ]);
