@@ -1,32 +1,51 @@
 import React from "react";
 import Footer from "../components/Footer";
+import ContactCard from "./ContactCard";
 
 const Contact = () => {
-  const cardStyles = {
-    background: "rgba(255,255,255,0.05)",
-    width: "30rem",
-    padding: "20px",
-    borderRadius: "10px",
-    fontFamily: "Poppins",
+  const gradientText = {
+    background: "-webkit-linear-gradient(white, #38495a)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    fontFamily: "Rundeck",
   };
 
-  const contactStyles = {
-    fontSize: "1.2rem",
-  };
+  const contactData = [
+    {
+      name: "Dr. Anil Dahiya",
+    },
+    {
+      name: "Amogh Sarraf",
+    },
+    {
+      name: "Narendra Deo",
+    },
+    {
+      name: "Kavya Singhal",
+    },
+  ];
 
   return (
-    <div>
-      <div className="flex items-center justify-center w-full h-screen text-white gap-8">
-        <div className="shadow-2xl" style={cardStyles}>
-          <h2 className="text-4xl font-semibold">Faculty Coordinator</h2>
-          <br />
-          <p style={contactStyles}>Mr. Anil Dahiya: +91-928-959-7139</p>
-          <br />
-          <h2 className="text-4xl font-semibold">Student Coordinator</h2>
-          <br />
-          <p style={contactStyles}>Kavya Singhal: +91-928-959-7139</p>
-          <p style={contactStyles}>Amogh Sarraf: +91-928-959-7139</p>
-          <p style={contactStyles}>Narendra Deo: +91-928-959-7139</p>
+    <div className="w-full min-h-screen overflow-auto">
+      <div
+        className="flex flex-col items-center justify-center w-full h-full text-white gap-24 my-[10rem]"
+        style={{ fontFamily: "Poppins" }}
+      >
+        <div className="flex flex-col items-center justify-center gap-5">
+          <h2 className="text-4xl p-2" style={gradientText}>
+            Faculty Coordinator
+          </h2>
+          <ContactCard data={contactData[0]} />
+        </div>
+        <div className="flex flex-col items-center justify-center gap-5">
+          <h2 className="text-4xl p-2" style={gradientText}>
+            Student Coordinator
+          </h2>
+          <div className="flex items-center gap-24">
+            {contactData.slice(1).map((data, index) => (
+              <ContactCard data={data} />
+            ))}
+          </div>
         </div>
       </div>
       <Footer />

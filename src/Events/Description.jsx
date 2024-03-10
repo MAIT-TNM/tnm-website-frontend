@@ -11,7 +11,6 @@ const Description = () => {
   const { event } = useParams();
   const location = useLocation();
   const data = location.state.eventInfo;
-  console.log(data);
   return (
     <div
       className="text-white w-full h-[100vh] flex justify-center items-center pt-[90px] overflow-y-auto shadow-2xl"
@@ -21,7 +20,7 @@ const Description = () => {
         <div
           className="w-full h-[15rem] rounded-t-3xl p-5 flex items-center gap-5"
           style={{
-            background: `url(${banner})`,
+            background: `linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${banner})`,
             backgroundSize: "cover",
           }}
         >

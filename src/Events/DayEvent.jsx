@@ -2,8 +2,14 @@ import React from "react";
 import EventCard from "./EventCard";
 
 const DayEvent = ({ day, eventsData }) => {
+  const events = {
+    1: "Cultural",
+    2: "Technical",
+    3: "Sports",
+  };
+
   return (
-    <div className="flex flex-col mt-[10rem] justify-center items-center">
+    <div className="flex flex-col justify-center items-center">
       <span
         className="text-white text-5xl p-2"
         style={{
@@ -13,7 +19,7 @@ const DayEvent = ({ day, eventsData }) => {
           WebkitTextFillColor: "transparent",
         }}
       >
-        Day {day}
+        {events[day]} Events
       </span>
       <hr
         className="w-[80%] h-[1px] border-none my-5"

@@ -14,6 +14,7 @@ import Contact from "./Contact/Contact";
 import Description from "./Events/Description";
 import { DataContext } from "../src/context";
 import { URLS } from "./url";
+import Register from "./Register/Register";
 
 const MainLayout = () => (
   <Layout>
@@ -39,6 +40,7 @@ const router = createBrowserRouter([
         element: <Events />,
       },
       { path: ":event", element: <Description /> },
+      { path: ":event/register", element: <Register /> },
     ],
   },
 ]);
