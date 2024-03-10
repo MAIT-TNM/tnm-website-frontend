@@ -1,4 +1,5 @@
 import React from "react";
+import SponsorContent from "./SponsorContent";
 
 const PrevSponsors = () => {
   const gradientText = {
@@ -10,9 +11,10 @@ const PrevSponsors = () => {
 
   return (
     <div>
-      <p className="text-5xl my-10 p-2" style={gradientText}>
+      <p className="text-center text-5xl my-10 p-2" style={gradientText}>
         Our Sponsors
       </p>
+      <SponsorContent />
     </div>
   );
 };

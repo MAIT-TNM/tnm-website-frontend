@@ -1,5 +1,5 @@
 import React from "react";
-import college from "../images/event.jpg";
+import college from "../images/college.png";
 import CountUp from "react-countup";
 
 const About = () => {
@@ -18,7 +18,7 @@ const About = () => {
       </h2>
       <div className="w-[60%] flex flex-col items-center gap-5">
         <div className="w-full flex items-center gap-5">
-          <div className="flex w-[33%] flex-grow flex-col text-white py-7 px-8 bg-[rgba(255,255,255,0.05)] border-[1px] border-[#252525] backdrop-blur-sm rounded-xl shadow-2xl gap-2">
+          <div className="flex w-[33%] flex-grow flex-col items-center text-white py-7 px-8 bg-[rgba(255,255,255,0.05)] border-[1px] border-[#252525] backdrop-blur-sm rounded-xl shadow-2xl gap-2">
             <span className="text-2xl" style={{ fontFamily: "Ultra, serif" }}>
               <CountUp start={0} end={50} duration={3} delay={0} />+
             </span>
@@ -29,7 +29,7 @@ const About = () => {
               Events
             </span>
           </div>
-          <div className="flex w-[33%] flex-grow flex-col text-white py-7 px-8 bg-[rgba(255,255,255,0.05)] border-[1px] border-[#252525] backdrop-blur-sm rounded-xl shadow-2xl gap-2">
+          <div className="flex w-[33%] flex-grow flex-col items-center text-white py-7 px-8 bg-[rgba(255,255,255,0.05)] border-[1px] border-[#252525] backdrop-blur-sm rounded-xl shadow-2xl gap-2">
             <span className="text-2xl" style={{ fontFamily: "Ultra, serif" }}>
               <CountUp start={0} end={20000} duration={3} delay={0} />+
             </span>
@@ -40,7 +40,7 @@ const About = () => {
               Footfall
             </span>
           </div>
-          <div className="flex w-[33%] flex-grow flex-col text-white py-7 px-8 bg-[rgba(255,255,255,0.05)] border-[1px] border-[#252525] backdrop-blur-sm rounded-xl shadow-2xl gap-2">
+          <div className="flex w-[33%] flex-grow flex-col items-center text-white py-7 px-8 bg-[rgba(255,255,255,0.05)] border-[1px] border-[#252525] backdrop-blur-sm rounded-xl shadow-2xl gap-2">
             <span className="text-2xl" style={{ fontFamily: "Ultra, serif" }}>
               <CountUp start={0} end={200000} duration={3} delay={0} />+
             </span>

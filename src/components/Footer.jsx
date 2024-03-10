@@ -1,10 +1,10 @@
 import {
-  Keyboard,
   Copyright,
   Instagram,
   Facebook,
   Linkedin,
   Mail,
+  Heart,
 } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -77,7 +77,7 @@ const Footer = () => {
           }}
         >
           Made with
-          <Keyboard className="w-[20px] text-[#919AA4]" /> by Sparsh Shandilya &
+          <Heart className="w-[20px] text-[#919AA4]" /> by Sparsh Shandilya &
           Ishaan Sangwan
         </span>
       </div>

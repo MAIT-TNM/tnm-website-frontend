@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
@@ -12,8 +12,8 @@ import Faculty from "./Faculty/Faculty";
 import Schedule from "./Schedule/Schedule";
 import Contact from "./Contact/Contact";
 import Description from "./Events/Description";
-import Login from "./Login/Login";
-import Register from "./Register/Register";
+import { DataContext } from "../src/context";
+import { URLS } from "./url";
 
 const MainLayout = () => (
   <Layout>
@@ -39,15 +39,36 @@ const router = createBrowserRouter([
         element: <Events />,
       },
       { path: ":event", element: <Description /> },
-      { path: "login", element: <Login /> },
-      { path: "register", element: <Register /> },
     ],
   },
 ]);
 
+const AppProvider = ({ children }) => {
+  const [eventsData, setEventsData] = useState();
+
+  useEffect(() => {
+    fetch(`${URLS.server}/test/`, {
+      method: "GET",
+      mode: "cors",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setEventsData(data);
+      });
+  }, []);
+
+  return (
+    <DataContext.Provider value={{ eventsData }}>
+      {children}
+    </DataContext.Provider>
+  );
+};
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <AppProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </AppProvider>
   </React.StrictMode>
 );

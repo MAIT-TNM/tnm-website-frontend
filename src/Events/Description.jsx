@@ -1,13 +1,17 @@
 import React from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import eventImg from "../images/event.jpg";
 import banner from "../images/banner.jpg";
 import { useLocation } from "react-router";
+import { URLS } from "../url";
 
 const Description = () => {
+  const navigate = useNavigate();
+
   const { event } = useParams();
   const location = useLocation();
-  console.log(location.state);
+  const data = location.state.eventInfo;
+  console.log(data);
   return (
     <div
       className="text-white w-full h-[100vh] flex justify-center items-center pt-[90px] overflow-y-auto shadow-2xl"
@@ -21,7 +25,13 @@ const Description = () => {
             backgroundSize: "cover",
           }}
         >
-          <img src={eventImg} alt="event" className="h-full rounded-xl" />
+          <img
+            src={`${
+              data.event_photo ? URLS.server + data.event_photo : `${eventImg}`
+            }`}
+            alt="event"
+            className="h-full rounded-xl"
+          />
           <div className="w-[1px] h-full bg-[rgba(255,255,255,0.5)]"></div>
           <div className="w-full h-full flex flex-col justify-around">
             <span
@@ -77,14 +87,15 @@ const Description = () => {
             <p>For more information contact:</p>
             <div className="pl-10">
               <ul className="list-disc">
-                <li>Amogh Sarraf: +91-9530017040</li>
-                <li>Narendra Deo: +91-7970691240</li>
-                <li>Kavya Singhal: +91-9929588662</li>
+                <li>{data.event_incharge}: +91-9530017040</li>
               </ul>
             </div>
           </div>
           <div className="flex items-center justify-center p-5">
-            <button className="text-black bg-white w-[15rem] p-5 rounded-lg font-medium shadow-25xl">
+            <button
+              className="text-black bg-white w-[15rem] p-5 rounded-lg font-medium shadow-2xl"
+              onClick={() => navigate("register")}
+            >
               Register
             </button>
           </div>

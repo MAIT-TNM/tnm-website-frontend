@@ -4,6 +4,8 @@ import mait from "../src/images/MAIT_LOGO_FULL.png";
 import mates from "../src/images/MATES25Yrs.png";
 import Footer from "./components/Footer";
 import PrevSponsors from "./components/PrevSponsors";
+import Artist from "./components/Artist";
+import HomeEvents from "./components/HomeEvents";
 
 function App() {
   const gradientText = {
@@ -15,13 +17,7 @@ function App() {
 
   return (
     <div className="snap-y snap-mandatory overflow-auto h-screen">
-      <div
-        className="snap-start w-full min-h-screen flex items-center justify-around text-white bg-transparent"
-        style={{
-          background:
-            "radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%)",
-        }}
-      >
+      <div className="snap-start w-full min-h-screen flex items-center justify-around text-white bg-transparent">
         <div className="flex flex-col items-center text-center">
           <img
             src={mait}
@@ -35,7 +31,7 @@ function App() {
           />
           <div>
             <p
-              className="font-thin"
+              className="text-3xl font-light"
               style={{
                 fontFamily: "Ultra",
                 background: "-webkit-linear-gradient(white, #38495a)",
@@ -97,6 +93,12 @@ function App() {
         id="about"
       >
         <About />
+      </div>
+      <div className="snap-start w-full min-h-screen flex items-center justify-around">
+        <Artist />
+      </div>
+      <div className="snap-start w-full min-h-screen flex items-center justify-around">
+        <HomeEvents />
       </div>
       <div className="snap-start w-full min-h-screen flex items-center justify-around">
         <PrevSponsors />
