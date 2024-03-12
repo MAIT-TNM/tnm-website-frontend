@@ -10,7 +10,7 @@ const FormElement = ({ member, handleChange, index }) => {
           required
           type="text"
           placeholder="Enter your name"
-          value={member.first_name}
+          value={member && member.first_name}
           onChange={(e) => handleChange(index, "first_name", e.target.value)}
           className="p-3 mb-5 rounded-md bg-transparent outline-none border-[0.5px] border-[#919AA4] text-[#919AA4]"
         />
@@ -21,7 +21,7 @@ const FormElement = ({ member, handleChange, index }) => {
           required
           type="number"
           placeholder="Enter your phone number"
-          value={member.first_phone}
+          value={member && member.first_phone}
           onChange={(e) => handleChange(index, "first_phone", e.target.value)}
           className="p-3 mb-5 rounded-md bg-transparent outline-none border-[0.5px] border-[#919AA4] text-[#919AA4]"
         />
@@ -32,7 +32,7 @@ const FormElement = ({ member, handleChange, index }) => {
           required
           type="text"
           placeholder="Enter your college name"
-          value={member.first_college}
+          value={member && member.first_college}
           onChange={(e) => handleChange(index, "first_college", e.target.value)}
           className="p-3 mb-5 rounded-md bg-transparent outline-none border-[0.5px] border-[#919AA4] text-[#919AA4]"
         />

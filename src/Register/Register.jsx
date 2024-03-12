@@ -3,22 +3,47 @@ import Footer from "../components/Footer";
 import { Plus, Minus } from "lucide-react";
 import FormElement from "./FormElement";
 import { URLS } from "../url";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import toast, { Toaster } from "react-hot-toast";
+import useRazorpay from "react-razorpay";
 
 const Register = () => {
+  const [Razorpay] = useRazorpay();
   const location = useLocation();
+  const navigate = useNavigate();
   const notify = () => toast.success("Registration Successful!!!");
   const id = location.state.eventInfo.event_id;
+  // console.log(location.state.eventInfo);
   const [memberCount, setMemberCount] = useState(1);
   const [members, setMembers] = useState([
-    { first_name: "", first_phone: null, first_college: "", event: id },
+    {
+      team_name: "",
+      first_name: "",
+      first_phone: null,
+      first_college: "",
+      event: id,
+    },
   ]);
+  const [teamName, setTeamName] = useState("");
+  const [paymentData, setPaymentData] = useState({});
 
   const handleChange = (index, field, value) => {
-    const newMembers = [...members];
-    newMembers[index][field] = value;
-    setMembers(newMembers);
+    const newMembers = members.map((member, i) => {
+      if (i === index) {
+        return { ...member, [field]: value };
+      }
+      return member;
+    });
+
+    const updatedMembers = newMembers.map((member, i) => ({
+      ...member,
+      team_name: i === 0 ? value : member.team_name,
+    }));
+
+    setMembers(updatedMembers);
+    if (field === "team_name") {
+      setTeamName(value);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -28,14 +53,73 @@ const Register = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ members }),
+      body: JSON.stringify({
+        members: members.slice(0, memberCount),
+        team_name: teamName,
+      }),
     });
     const data = await response.json();
-    notify();
-    console.log(data);
-    setMembers([
-      { first_name: "", first_phone: "", first_college: "", event: id },
-    ]);
+    // notify();
+    // console.log(data.message);
+    setMembers(
+      Array.from({ length: memberCount }, () => ({
+        first_name: "",
+        first_phone: "",
+        first_college: "",
+        event: id,
+      }))
+    );
+    setTeamName("");
+    if (data.message === "Registration successful") {
+      const response = await fetch(
+        `${URLS.server}/Pay/${location.state.eventInfo.event_name}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const info = await response.json();
+      setPaymentData(info);
+      console.log("Payment Data: ", paymentData);
+      var options = {
+        key: paymentData["key"],
+        amount: "100",
+        currency: "INR",
+        name: "MAIT TNM", //
+        description: "Registratino",
+        order_id: paymentData["razorpay_order_id"],
+        callback_url: paymentData["callback_url"],
+
+        notes: {
+          address: "TNM Registeration",
+        },
+        theme: {
+          color: "#3399cc",
+        },
+      };
+      console.log(options);
+      var rzp1 = new Razorpay(options);
+      rzp1.open();
+    }
+  };
+
+  const handleAddMember = () => {
+    if (memberCount < 4) {
+      setMemberCount((prev) => prev + 1);
+      setMembers((prevMembers) => [
+        ...prevMembers,
+        { first_name: "", first_phone: null, first_college: "", event: id },
+      ]);
+    }
+  };
+
+  const handleRemoveMember = () => {
+    if (memberCount > 1) {
+      setMemberCount((prev) => prev - 1);
+      setMembers((prevMembers) => prevMembers.slice(0, memberCount - 1));
+    }
   };
 
   return (
@@ -52,7 +136,7 @@ const Register = () => {
             </div>
           </div>
           <div className="mt-4">
-            <h2 className="text-center m-2 text-[#919AA4]">
+            <h2 className="text-center m-2 text-[#919AA4] font-bold">
               Number of team members
             </h2>
             <div
@@ -62,9 +146,7 @@ const Register = () => {
               <div className="w-full flex items-center gap-5 h-[50px]">
                 <button
                   className="bg-[rgba(0,0,0,0.2)] p-3 rounded-md"
-                  onClick={() =>
-                    setMemberCount((prev) => (prev === 1 ? prev : prev - 1))
-                  }
+                  onClick={handleRemoveMember}
                 >
                   <Minus />
                 </button>
@@ -73,14 +155,27 @@ const Register = () => {
                 </div>
                 <button
                   className="bg-[rgba(0,0,0,0.2)] p-3 rounded-md"
-                  onClick={() =>
-                    setMemberCount((prev) => (prev === 4 ? prev : prev + 1))
-                  }
+                  onClick={handleAddMember}
                 >
                   <Plus />
                 </button>
               </div>
-              <div className="overflow-auto max-h-[400px]">
+              <div className="overflow-auto max-h-[450px]">
+                {memberCount > 1 && (
+                  <div className="flex flex-col">
+                    <label className="text-[#919AA4] py-1 font-bold">
+                      Team Name
+                    </label>
+                    <input
+                      required
+                      type="text"
+                      placeholder="Enter your team name"
+                      className="p-3 mb-5 rounded-md bg-transparent outline-none border-[0.5px] border-[#919AA4] text-[#919AA4]"
+                      value={teamName}
+                      onChange={(e) => setTeamName(e.target.value)}
+                    />
+                  </div>
+                )}
                 {members.map((member, index) => (
                   <React.Fragment key={index}>
                     <h2 className="text-center text-[#919AA4] font-bold">
@@ -93,9 +188,6 @@ const Register = () => {
                     />
                   </React.Fragment>
                 ))}
-                {/* {Array.from({ length: memberCount }, (_, index) => (
-
-                ))} */}
                 <button
                   type="submit"
                   onClick={handleSubmit}
