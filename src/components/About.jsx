@@ -53,7 +53,7 @@ const About = () => {
           </div>
         </div>
         <div className="w-full flex items-center gap-5">
-          <div className="flex flex-grow w-[500px] overflow-scroll h-[350px] flex-col text-white px-7 py-5 bg-[rgba(255,255,255,0.05)] border-[1px] border-[#252525] backdrop-blur-sm rounded-xl shadow-2xl gap-2">
+          <div className="flex flex-grow w-[500px] overflow-auto 2xl:overflow-hidden h-[350px] flex-col text-white px-7 py-5 bg-[rgba(255,255,255,0.05)] border-[1px] border-[#252525] backdrop-blur-sm rounded-xl shadow-2xl gap-2">
             <p
               className="text-lg text-justify"
               style={{ fontFamily: "Poppins" }}

@@ -11,6 +11,7 @@ const Description = () => {
   const { event } = useParams();
   const location = useLocation();
   const data = location.state.eventInfo;
+  console.log(data);
   return (
     <div
       className="text-white w-full h-[100vh] flex justify-center items-center pt-[90px] overflow-y-auto shadow-2xl"
@@ -93,7 +94,9 @@ const Description = () => {
           <div className="flex items-center justify-center p-5">
             <button
               className="text-black bg-white w-[15rem] p-5 rounded-lg font-medium shadow-2xl"
-              onClick={() => navigate("register")}
+              onClick={() =>
+                navigate("register", { state: { eventInfo: data } })
+              }
             >
               Register
             </button>
