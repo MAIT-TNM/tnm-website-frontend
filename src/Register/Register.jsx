@@ -105,7 +105,7 @@ const Register = () => {
 
       const options = {
         key: info["key"],
-        amount: "100",
+        amount: info["amount"],
         currency: "INR",
         name: "MAIT TNM",
         description: "Registration",

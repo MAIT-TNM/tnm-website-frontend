@@ -1,1 +1,1 @@
-export const URLS = { server: "http://localhost:8000" };
+export const URLS = { server: "http://20.197.1.14" };
