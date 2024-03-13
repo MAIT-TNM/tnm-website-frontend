@@ -11,7 +11,6 @@ const Description = () => {
   const { event } = useParams();
   const location = useLocation();
   const data = location.state.eventInfo;
-  console.log(data);
   return (
     <div
       className="text-white w-full h-[100vh] flex justify-center items-center pt-[90px] overflow-y-auto shadow-2xl"
@@ -42,12 +41,13 @@ const Description = () => {
             >
               {event[0].toUpperCase() + event.slice(1)}
             </span>
+            <div>{data.event_discpription}</div>
             <div
               className="flex justify-between text-xl font-semibold"
               style={{ fontFamily: "Poppins" }}
             >
-              <span>Venue: Basketball</span>
-              <span>Entry Fees: 200/- per person</span>
+              <span>Prize Pool: ₹{data.prize_pool}</span>
+              <span>Entry Fees: {data.entry_fees}/- per person</span>
             </div>
           </div>
         </div>
@@ -55,39 +55,18 @@ const Description = () => {
           <div className="p-5 leading-7" style={{ fontFamily: "Poppins" }}>
             <p>Rules & Regulations: </p>
             <ol className="pl-10 list-decimal">
-              <li>
-                Each team must consist of a minimum number of players, typically
-                five, to start a game.
-              </li>
-              <li>
-                A team may have substitutes, allowing players to rotate in and
-                out during the game.
-              </li>
-              <li>
-                Games are typically divided into two halves, each lasting a
-                specified amount of time (e.g., 20 minutes per half).
-              </li>
-              <li>There may be a halftime break between the two halves.</li>
-              <li>
-                If the game is tied at the end of regulation time, overtime
-                periods may be played to determine a winner.
-              </li>
-              <li>
-                Players are expected to conduct themselves in a sportsmanlike
-                manner.
-              </li>
-              <li>
-                Unsportsmanlike behavior, including taunting, trash-talking, or
-                aggressive conduct, may result in penalties or ejection from the
-                game.
-              </li>
+              {"Sparsh\nShandilya".split("\n").map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
             </ol>
           </div>
           <div className="w-full p-5">
             <p>For more information contact:</p>
             <div className="pl-10">
               <ul className="list-disc">
-                <li>{data.event_incharge}: +91-9530017040</li>
+                <li>
+                  {data.event_incharge}: +91-{data.event_incharge_contact}
+                </li>
               </ul>
             </div>
           </div>

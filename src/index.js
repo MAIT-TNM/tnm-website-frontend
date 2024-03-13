@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
 import Layout from "./Layout";
 import Background from "./components/Background";
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
@@ -15,6 +15,7 @@ import Description from "./Events/Description";
 import { DataContext } from "../src/context";
 import { URLS } from "./url";
 import Register from "./Register/Register";
+import Navbar from "./components/Navbar/Navbar";
 
 const MainLayout = () => (
   <Layout>

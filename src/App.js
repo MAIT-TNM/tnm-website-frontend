@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import PrevSponsors from "./components/PrevSponsors";
 import Artist from "./components/Artist";
 import HomeEvents from "./components/HomeEvents";
+import React from "react";
 
 function App() {
   const gradientText = {
@@ -15,6 +16,13 @@ function App() {
     fontFamily: "Rundeck",
   };
 
+  const gradientText1 = {
+    fontFamily: "Ultra",
+    background: "-webkit-linear-gradient(white, #38495a)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+  };
+
   return (
     <div className="snap-y snap-mandatory overflow-auto h-screen">
       <div className="snap-start w-full min-h-screen flex items-center justify-around text-white bg-transparent">
@@ -22,67 +30,29 @@ function App() {
           <img
             src={mait}
             alt="mait-logo"
-            className="absolute w-[70px] top-5 left-[5rem]"
+            className="absolute w-[70px] top-5 left-[5rem] hidden lg:block"
           />
           <img
             src={mates}
             alt="mates-logo"
-            className="absolute w-[70px] rounded-md top-5 right-[5rem]"
+            className="absolute w-[70px] rounded-md top-5 right-[5rem] hidden lg:block"
           />
           <div>
-            <p
-              className="text-3xl font-light"
-              style={{
-                fontFamily: "Ultra",
-                background: "-webkit-linear-gradient(white, #38495a)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
+            <p className="hero-subtitle mt-[5rem]" style={gradientText1}>
               Maharaja Agrasen Institute of Technology
             </p>
-            <p
-              className="font-thin"
-              style={{
-                fontFamily: "Ultra",
-                background: "-webkit-linear-gradient(white, #38495a)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
+            <p className="font-thin text-base" style={gradientText1}>
               presents
             </p>
           </div>
 
-          <div className="text-[7rem] text-center" style={gradientText}>
+          <div className="hero-title text-center" style={gradientText}>
             Techsurge & Mridang'24
           </div>
-          <div
-            className="text-[3.5rem]"
-            style={
-              (gradientText,
-              {
-                fontFamily: "Ultra, serif",
-                background: "-webkit-linear-gradient(white, #38495a)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              })
-            }
-          >
+          <div className="dates" style={gradientText1}>
             20-21-22 March'24
           </div>
-          <div
-            className="text-[1.5rem]"
-            style={
-              (gradientText,
-              {
-                fontFamily: "Ultra, serif",
-                background: "-webkit-linear-gradient(white, #38495a)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              })
-            }
-          >
+          <div className="tagline" style={gradientText1}>
             #ExpectTheUnexpected
           </div>
           <Timer />

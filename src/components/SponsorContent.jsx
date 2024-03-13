@@ -16,118 +16,43 @@ import fourteen from "../images/amul.png";
 import fifteen from "../images/zebronics.avif";
 
 const SponsorContent = () => {
-  const sponsorCard = {
-    width: "200px",
-    height: "200px",
-  };
-
   return (
-    <div className="grid grid-cols-5 gap-5">
-      <div style={sponsorCard}>
-        <img
-          src={one}
-          alt="coca-cola"
-          className="w-full h-full shadow-2xl rounded-2xl"
-        />
+    <div className="w-full flex flex-col items-center justify-center px-4">
+      <div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5">
+          <SponsorCard image={one} />
+          <SponsorCard image={two} />
+          <SponsorCard image={three} />
+          <SponsorCard image={four} />
+          <SponsorCard image={five} />
+          <SponsorCard image={six} />
+          <SponsorCard image={seven} />
+          <SponsorCard image={eight} />
+          <SponsorCard image={nine} />
+          <SponsorCard image={ten} />
+          <SponsorCard image={eleven} />
+          <SponsorCard image={twelve} />
+          <SponsorCard image={thirteen} />
+          <SponsorCard image={fourteen} />
+          <SponsorCard image={fifteen} />
+        </div>
       </div>
-      <div style={sponsorCard}>
-        <img
-          src={two}
-          alt="coca-cola"
-          className="w-full h-full shadow-2xl rounded-2xl"
-        />
-      </div>
-      <div style={sponsorCard}>
-        <img
-          src={three}
-          alt="coca-cola"
-          className="w-full h-full shadow-2xl rounded-2xl"
-        />
-      </div>
-      <div style={sponsorCard}>
-        <img
-          src={four}
-          alt="coca-cola"
-          className="w-full h-full shadow-2xl rounded-2xl"
-        />
-      </div>
-      <div style={sponsorCard}>
-        <img
-          src={five}
-          alt="coca-cola"
-          className="w-full h-full shadow-2xl rounded-2xl"
-        />
-      </div>
-      <div style={sponsorCard}>
-        <img
-          src={six}
-          alt="coca-cola"
-          className="w-full h-full shadow-2xl rounded-2xl"
-        />
-      </div>
-      <div style={sponsorCard}>
-        <img
-          src={seven}
-          alt="coca-cola"
-          className="w-full h-full shadow-2xl rounded-2xl"
-        />
-      </div>
-      <div style={sponsorCard}>
-        <img
-          src={eight}
-          alt="coca-cola"
-          className="w-full h-full shadow-2xl rounded-2xl"
-        />
-      </div>
-      <div style={sponsorCard}>
-        <img
-          src={nine}
-          alt="coca-cola"
-          className="w-full h-full shadow-2xl rounded-2xl"
-        />
-      </div>
-      <div style={sponsorCard}>
-        <img
-          src={ten}
-          alt="coca-cola"
-          className="w-full h-full shadow-2xl rounded-2xl"
-        />
-      </div>
-      <div style={sponsorCard}>
-        <img
-          src={eleven}
-          alt="coca-cola"
-          className="w-full h-full shadow-2xl rounded-2xl"
-        />
-      </div>
-      <div style={sponsorCard}>
-        <img
-          src={twelve}
-          alt="coca-cola"
-          className="w-full h-full shadow-2xl rounded-2xl"
-        />
-      </div>
-      <div style={sponsorCard}>
-        <img
-          src={thirteen}
-          alt="coca-cola"
-          className="w-full h-full shadow-2xl rounded-2xl"
-        />
-      </div>
-      <div style={sponsorCard}>
-        <img
-          src={fourteen}
-          alt="coca-cola"
-          className="w-full h-full shadow-2xl rounded-2xl"
-        />
-      </div>
-      <div style={sponsorCard}>
-        <img
-          src={fifteen}
-          alt="coca-cola"
-          className="w-full h-full shadow-2xl rounded-2xl"
-        />
-      </div>
+    </div>
+  );
+};
+
+const SponsorCard = ({ image }) => {
+  const sponsorCard = {
+    width: "300px", // Increased width
+    height: "300px", // Increased height
+  };
+  return (
+    <div style={sponsorCard}>
+      <img
+        src={image}
+        alt="sponsor"
+        className="w-full h-full object-cover shadow-2xl rounded-2xl"
+      />
     </div>
   );
 };

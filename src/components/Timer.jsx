@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 
 const Timer = () => {
+  const timeStyles = {
+    background: "-webkit-linear-gradient(white, #38495a)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+  };
+
   const targetDate = new Date("March 20, 2024 00:00:00").getTime();
 
   const [time, setTime] = useState(targetDate - Date.now());
@@ -13,88 +19,28 @@ const Timer = () => {
     return (
       <div className="w-[550px] flex items-center justify-around rounded-xl my-10 gap-3">
         <div className="flex flex-col items-center bg-[rgba(255,255,255,0.05)] p-5 rounded-md gap-3 flex-grow shadow-2xl">
-          <span
-            className="font-bold text-5xl"
-            style={{
-              background: "-webkit-linear-gradient(white, #38495a)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
+          <span className="font-bold text-5xl" style={timeStyles}>
             {days}
           </span>
-          <span
-            style={{
-              background: "-webkit-linear-gradient(white, #38495a)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            Days
-          </span>
+          <span style={timeStyles}>Days</span>
         </div>
         <div className="flex flex-col items-center bg-[rgba(255,255,255,0.05)] p-5 rounded-md gap-3 flex-grow shadow-2xl">
-          <span
-            className="font-bold text-5xl"
-            style={{
-              background: "-webkit-linear-gradient(white, #38495a)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
+          <span className="font-bold text-5xl" style={timeStyles}>
             {hours % 24}
           </span>
-          <span
-            style={{
-              background: "-webkit-linear-gradient(white, #38495a)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            Hours
-          </span>
+          <span style={timeStyles}>Hours</span>
         </div>
         <div className="flex flex-col items-center bg-[rgba(255,255,255,0.05)] p-5 rounded-md gap-3 flex-grow shadow-2xl">
-          <span
-            className="font-bold text-5xl"
-            style={{
-              background: "-webkit-linear-gradient(white, #38495a)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
+          <span className="font-bold text-5xl" style={timeStyles}>
             {minutes % 60}
           </span>
-          <span
-            style={{
-              background: "-webkit-linear-gradient(white, #38495a)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            Minutes
-          </span>
+          <span style={timeStyles}>Minutes</span>
         </div>
         <div className="flex flex-col items-center bg-[rgba(255,255,255,0.05)] p-5 rounded-md gap-3 flex-grow shadow-2xl">
-          <span
-            className="font-bold text-5xl"
-            style={{
-              background: "-webkit-linear-gradient(white, #38495a)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
+          <span className="font-bold text-5xl" style={timeStyles}>
             {seconds % 60}
           </span>
-          <span
-            style={{
-              background: "-webkit-linear-gradient(white, #38495a)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            Seconds
-          </span>
+          <span style={timeStyles}>Seconds</span>
         </div>
       </div>
     );

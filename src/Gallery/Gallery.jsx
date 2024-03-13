@@ -14,84 +14,69 @@ const Gallery = () => {
   return (
     <>
       <div className="text-white w-full flex justify-center min-h-screen mt-[150px] overflow-auto">
-        <div className="flex flex-col items-center gap-8">
-          <div className="flex items-center gap-8">
-            <div className="w-[400px] h-[400px] shadow-2xl rounded-[10px] overflow-hidden">
-              <img
-                src={one}
-                alt="gallery-one"
-                className="w-full h-full bg-contain bg-center rounded-[10px] hover:scale-125"
-                style={{ transition: "all 200ms ease-in-out" }}
-              />
-            </div>
-            <div className="w-[400px] h-[400px] shadow-2xl rounded-[10px] overflow-hidden">
-              <img
-                src={two}
-                alt="gallery-one"
-                className="w-full h-full bg-contain bg-center rounded-[10px] hover:scale-125"
-                style={{ transition: "all 200ms ease-in-out" }}
-              />
-            </div>
-            <div className="w-[400px] h-[400px] shadow-2xl rounded-[10px] overflow-hidden">
-              <img
-                src={three}
-                alt="gallery-one"
-                className="w-full h-full bg-contain bg-center rounded-[10px] hover:scale-125"
-                style={{ transition: "all 200ms ease-in-out" }}
-              />
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="w-full h-[300px] md:h-[400px] shadow-2xl rounded-[10px] overflow-hidden">
+            <img
+              src={one}
+              alt="gallery-one"
+              className="w-full h-full bg-contain bg-center rounded-[10px] hover:scale-125 transition-all duration-200 ease-in-out"
+            />
           </div>
-          <div className="flex items-center gap-8">
-            <div className="w-[400px] h-[400px] shadow-2xl rounded-[10px] overflow-hidden">
-              <img
-                src={four}
-                alt="gallery-one"
-                className="w-full h-full bg-contain bg-center rounded-[10px] hover:scale-125"
-                style={{ transition: "all 200ms ease-in-out" }}
-              />
-            </div>
-            <div className="w-[400px] h-[400px] shadow-2xl rounded-[10px] overflow-hidden">
-              <img
-                src={five}
-                alt="gallery-one"
-                className="w-full h-full bg-contain bg-center rounded-[10px] hover:scale-125"
-                style={{ transition: "all 200ms ease-in-out" }}
-              />
-            </div>
-            <div className="w-[400px] h-[400px] shadow-2xl rounded-[10px] overflow-hidden">
-              <img
-                src={six}
-                alt="gallery-one"
-                className="w-full h-full bg-contain bg-center rounded-[10px] hover:scale-125"
-                style={{ transition: "all 200ms ease-in-out" }}
-              />
-            </div>
+          <div className="w-full h-[300px] md:h-[400px] shadow-2xl rounded-[10px] overflow-hidden">
+            <img
+              src={two}
+              alt="gallery-one"
+              className="w-full h-full bg-contain bg-center rounded-[10px] hover:scale-125 transition-all duration-200 ease-in-out"
+            />
           </div>
-          <div className="flex items-center gap-8">
-            <div className="w-[400px] h-[400px] shadow-2xl rounded-[10px] overflow-hidden">
-              <img
-                src={seven}
-                alt="gallery-one"
-                className="w-full h-full bg-contain bg-center rounded-[10px] hover:scale-125"
-                style={{ transition: "all 200ms ease-in-out" }}
-              />
-            </div>
-            <div className="w-[400px] h-[400px] shadow-2xl rounded-[10px] overflow-hidden">
-              <img
-                src={eight}
-                alt="gallery-one"
-                className="w-full h-full bg-contain bg-center rounded-[10px] hover:scale-125"
-                style={{ transition: "all 200ms ease-in-out" }}
-              />
-            </div>
-            <div className="w-[400px] h-[400px] shadow-2xl rounded-[10px] overflow-hidden">
-              <img
-                src={nine}
-                alt="gallery-one"
-                className="w-full h-full bg-contain bg-center rounded-[10px] hover:scale-125"
-                style={{ transition: "all 200ms ease-in-out" }}
-              />
-            </div>
+          <div className="w-full h-[300px] md:h-[400px] shadow-2xl rounded-[10px] overflow-hidden">
+            <img
+              src={three}
+              alt="gallery-one"
+              className="w-full h-full bg-contain bg-center rounded-[10px] hover:scale-125 transition-all duration-200 ease-in-out"
+            />
+          </div>
+          <div className="w-full h-[300px] md:h-[400px] shadow-2xl rounded-[10px] overflow-hidden">
+            <img
+              src={four}
+              alt="gallery-one"
+              className="w-full h-full bg-contain bg-center rounded-[10px] hover:scale-125 transition-all duration-200 ease-in-out"
+            />
+          </div>
+          <div className="w-full h-[300px] md:h-[400px] shadow-2xl rounded-[10px] overflow-hidden">
+            <img
+              src={five}
+              alt="gallery-one"
+              className="w-full h-full bg-contain bg-center rounded-[10px] hover:scale-125 transition-all duration-200 ease-in-out"
+            />
+          </div>
+          <div className="w-full h-[300px] md:h-[400px] shadow-2xl rounded-[10px] overflow-hidden">
+            <img
+              src={six}
+              alt="gallery-one"
+              className="w-full h-full bg-contain bg-center rounded-[10px] hover:scale-125 transition-all duration-200 ease-in-out"
+            />
+          </div>
+          <div className="w-full h-[300px] md:h-[400px] shadow-2xl rounded-[10px] overflow-hidden">
+            <img
+              src={seven}
+              alt="gallery-one"
+              className="w-full h-full bg-contain bg-center rounded-[10px] hover:scale-125 transition-all duration-200 ease-in-out"
+            />
+          </div>
+          <div className="w-full h-[300px] md:h-[400px] shadow-2xl rounded-[10px] overflow-hidden">
+            <img
+              src={eight}
+              alt="gallery-one"
+              className="w-full h-full bg-contain bg-center rounded-[10px] hover:scale-125 transition-all duration-200 ease-in-out"
+            />
+          </div>
+          <div className="w-full h-[300px] md:h-[400px] shadow-2xl rounded-[10px] overflow-hidden">
+            <img
+              src={nine}
+              alt="gallery-one"
+              className="w-full h-full bg-contain bg-center rounded-[10px] hover:scale-125 transition-all duration-200 ease-in-out"
+            />
           </div>
         </div>
       </div>

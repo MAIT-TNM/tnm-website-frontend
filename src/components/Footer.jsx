@@ -40,7 +40,7 @@ const Footer = () => {
         <Link to="https://www.instagram.com/mait_tnm/">
           <Instagram className="text-[#919AA4]" />
         </Link>
-        <Link to="#">
+        <Link to="https://www.linkedin.com/company/udaanmait/">
           <Linkedin className="text-[#919AA4]" />
         </Link>
         <Link to="https://www.facebook.com/mait.tnm/">

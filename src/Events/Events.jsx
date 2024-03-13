@@ -8,9 +8,10 @@ const Events = () => {
   return (
     <>
       <div className="flex flex-col items-center overflow-auto my-[10rem]">
-        {[1, 1, 1].map((_, index) => (
+        {/* {[1, 1, 1].map((_, index) => (
           <DayEvent key={index} day={index + 1} eventsData={eventsData} />
-        ))}
+        ))} */}
+        <DayEvent day={3} eventsData={eventsData} />
       </div>
       <Footer />
     </>

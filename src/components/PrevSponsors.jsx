@@ -11,9 +11,12 @@ const PrevSponsors = () => {
 
   return (
     <div>
-      <p className="text-center text-5xl my-10 p-2" style={gradientText}>
-        Our Sponsors
-      </p>
+      <h2
+        className="text-4xl md:text-5xl my-6 md:my-10 text-center"
+        style={gradientText}
+      >
+        Past Sponsors
+      </h2>
       <SponsorContent />
     </div>
   );

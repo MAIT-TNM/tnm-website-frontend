@@ -32,16 +32,22 @@ const Contact = () => {
         style={{ fontFamily: "Poppins" }}
       >
         <div className="flex flex-col items-center justify-center gap-5">
-          <h2 className="text-4xl p-2" style={gradientText}>
+          <h2
+            className="text-4xl md:text-5xl my-6 md:my-10"
+            style={gradientText}
+          >
             Faculty Coordinator
           </h2>
           <ContactCard data={contactData[0]} />
         </div>
         <div className="flex flex-col items-center justify-center gap-5">
-          <h2 className="text-4xl p-2" style={gradientText}>
+          <h2
+            className="text-4xl md:text-5xl my-6 md:my-10"
+            style={gradientText}
+          >
             Student Coordinator
           </h2>
-          <div className="flex items-center gap-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-24">
             {contactData.slice(1).map((data, index) => (
               <ContactCard data={data} />
             ))}

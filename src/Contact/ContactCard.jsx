@@ -1,10 +1,18 @@
 import { Instagram, Linkedin, Mail, Phone } from "lucide-react";
 import React from "react";
+import avatar from "../images/avatar.jpg";
 
 const ContactCard = ({ data }) => {
   return (
     <div className="w-[20rem] flex flex-col items-center justify-center gap-2 border-[1px] border-[#919AA4] p-3 rounded-lg text-[#919AA4] shadow-2xl">
-      <div className="w-full h-[20rem] bg-[rgba(0,0,0,0.7)] rounded-lg"></div>
+      <div
+        className="w-full h-[20rem] rounded-lg"
+        style={{
+          background: `url(${avatar})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      ></div>
       <p
         className="font-bold text-xl"
         style={{
