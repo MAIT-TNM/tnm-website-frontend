@@ -104,15 +104,13 @@ const Register = () => {
       console.log("Payment Data: ", info);
 
       const options = {
-        key: "rzp_test_lgXnrlnr3w35wr",
+        key: info["key"],
         amount: "100",
         currency: "INR",
         name: "MAIT TNM",
         description: "Registration",
         order_id: info["razorpay_order_id"],
-        handler: function (response) {
-          console.log(response);
-        },
+        callbackurl_url: info["callback_url"],
         notes: {
           address: "TNM Registration",
         },
