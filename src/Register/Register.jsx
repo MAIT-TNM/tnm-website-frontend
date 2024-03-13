@@ -1,172 +1,45 @@
-// import React, { useState } from "react";
-// import Footer from "../components/Footer";
-// import { Plus, Minus } from "lucide-react";
-// import FormElement from "./FormElement";
-// import { URLS } from "../url";
-// import { useLocation, useNavigate } from "react-router";
-// import toast, { Toaster } from "react-hot-toast";
-// import useRazorpay from "react-razorpay";
-
-// const Register = () => {
-//   const [Razorpay] = useRazorpay();
-//   const location = useLocation();
-//   const navigate = useNavigate();
-//   const notify = () => toast.success("Registration Successful!!!");
-//   const id = location.state.eventInfo.event_id;
-//   // console.log(location.state.eventInfo);
-//   const [memberCount, setMemberCount] = useState(1);
-//   const [members, setMembers] = useState([
-//     {
-//       leader_email: "",
-//       team_name: "",
-//       first_name: "",
-//       first_phone: null,
-//       first_college: "",
-//       event: id,
-//     },
-//   ]);
-//   const [teamName, setTeamName] = useState("");
-//   const [paymentData, setPaymentData] = useState({});
-//   const [email, setEmail] = useState("");
-
-//   const handleChange = (index, field, value) => {
-//     const newMembers = members.map((member, i) => {
-//       if (i === index) {
-//         return { ...member, [field]: value };
-//       }
-//       return member;
-//     });
-
-//     const updatedMembers = newMembers.map((member, i) => {
-//       if (field === "team_name" && i === 0) {
-//         return { ...member, team_name: value };
-//       } else if (field === "first_college" && i === 0) {
-//         return { ...member, first_college: value };
-//       }
-//       return member;
-//     });
-
-//     setMembers(updatedMembers);
-//     if (field === "team_name") {
-//       setTeamName(value);
-//     }
-//     if (field === "leader_email") {
-//       setEmail(value);
-//     }
-//     console.log(members);
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     // console.log(members);
-//     const response = await fetch(`${URLS.server}/registerapi/`, {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({
-//         members: members.slice(0, memberCount),
-//         team_name: teamName,
-//         leader_email: email,
-//       }),
-//     });
-//     const data = await response.json();
-//     // notify();
-//     // console.log(data.message);
-//     setMembers(
-//       Array.from({ length: memberCount }, () => ({
-//         first_name: "",
-//         first_phone: "",
-//         first_college: "",
-//         event: id,
-//       }))
-//     );
-//     setTeamName("");
-//     if (data.message === "Registration successful") {
-//       const response = await fetch(
-//         `${URLS.server}/Pay/${location.state.eventInfo.event_name}`,
-//         {
-//           method: "GET",
-//           headers: {
-//             "Content-Type": "application/json",
-//           },
-//         }
-//       );
-//       const info = await response.json();
-//       setPaymentData(info);
-//       console.log("Payment Data: ", info);
-//       var options = {
-//         key: "rzp_test_lgXnrlnr3w35wr",
-//         amount: "100",
-//         currency: "INR",
-//         name: "MAIT TNM",
-//         description: "Registratino",
-//         order_id: info["razorpay_order_id"],
-//         callback_url: info["callback_url"],
-
-//         notes: {
-//           address: "TNM Registeration",
-//         },
-//         theme: {
-//           color: "#3399cc",
-//         },
-//       };
-//       console.log(options);
-//       var rzp1 = new Razorpay(options);
-//       rzp1.open();
-//       console.log(members);
-//     }
-//   };
-
-//   const handleAddMember = () => {
-//     if (memberCount < 4) {
-//       setMemberCount((prev) => prev + 1);
-//       setMembers((prevMembers) => [
-//         ...prevMembers,
-//         { first_name: "", first_phone: null, first_college: "", event: id },
-//       ]);
-//     }
-//   };
-
-//   const handleRemoveMember = () => {
-//     if (memberCount > 1) {
-//       setMemberCount((prev) => prev - 1);
-//       setMembers((prevMembers) => prevMembers.slice(0, memberCount - 1));
-//     }
-//   };
-
 import React, { useState } from "react";
 import Footer from "../components/Footer";
 import { Plus, Minus } from "lucide-react";
 import FormElement from "./FormElement";
 import { URLS } from "../url";
-import { useLocation, useNavigate } from "react-router";
+import { useLocation } from "react-router";
 import toast, { Toaster } from "react-hot-toast";
 import useRazorpay from "react-razorpay";
 
+const names = ["first", "second", "third", "fourth"];
+
 const Register = () => {
   const [Razorpay] = useRazorpay();
+
   const location = useLocation();
-  const navigate = useNavigate();
-  const notify = () => toast.success("Registration Successful!!!");
   const id = location.state.eventInfo.event_id;
-  // console.log(location.state.eventInfo);
   const [memberCount, setMemberCount] = useState(1);
-  const [members, setMembers] = useState([
-    {
-      first_name: "",
-      first_phone: null,
-      first_college: "",
-      event: id,
-    },
-  ]);
+  const [members, setMembers] = useState([{}]);
   const [teamName, setTeamName] = useState("");
   const [email, setEmail] = useState("");
+
+  function handleMemberNames(count) {
+    switch (count) {
+      case 1:
+        return "first";
+      case 2:
+        return "second";
+      case 3:
+        return "third";
+      case 4:
+        return "fourth";
+      default:
+        return "";
+    }
+  }
+
+  const fields = ["name", "phone", "college"];
 
   const handleChange = (index, field, value) => {
     const newMembers = members.map((member, i) => {
       if (i === index) {
-        return { ...member, [field]: value };
+        return { ...member, [`${field}`]: value };
       }
       return member;
     });
@@ -183,18 +56,18 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const modifiedMembers = members.map((member) => ({
-      ...member,
-      team_name: teamName,
-      leader_email: email,
-    }));
+    const newObj = {};
+    members.map((item) => {
+      Object.assign(newObj, item);
+    });
 
-    console.log(
-      "Modified Data: ",
-      JSON.stringify({
-        members: modifiedMembers,
-      })
-    );
+    delete newObj.name;
+    delete newObj.phone;
+    delete newObj.college;
+    newObj.leader_email = email;
+    newObj.team_name = teamName;
+
+    console.log(newObj);
 
     const response = await fetch(`${URLS.server}/registerapi/`, {
       method: "POST",
@@ -202,22 +75,21 @@ const Register = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        members: modifiedMembers,
+        members: newObj,
       }),
     });
 
     const data = await response.json();
-    // notify();
-    // console.log(data.message);
     setMembers(
-      Array.from({ length: memberCount }, () => ({
+      Array.from({ length: memberCount }, (_, index) => ({
         first_name: "",
-        first_phone: "",
+        first_phone: null,
         first_college: "",
         event: id,
       }))
     );
     setTeamName("");
+    setEmail("");
     if (data.message === "Registration successful") {
       const response = await fetch(
         `${URLS.server}/Pay/${location.state.eventInfo.event_name}?email=${email}`,
@@ -229,7 +101,6 @@ const Register = () => {
         }
       );
       const info = await response.json();
-      // setPaymentData(info);
       console.log("Payment Data: ", info);
 
       const options = {
@@ -239,11 +110,7 @@ const Register = () => {
         name: "MAIT TNM",
         description: "Registration",
         order_id: info["razorpay_order_id"],
-        // callback_url: `http://localhost:8000/paymenthandler/${location.state.eventInfo.event_name}`,
         handler: function (response) {
-          // alert(response.razorpay_order_id);
-          // alert(response.razorpay_order_id);
-          // alert(response.razorpay_signature);
           console.log(response);
         },
         notes: {
@@ -262,9 +129,15 @@ const Register = () => {
   const handleAddMember = () => {
     if (memberCount < 4) {
       setMemberCount((prev) => prev + 1);
+
       setMembers((prevMembers) => [
         ...prevMembers,
-        { first_name: "", first_phone: null, first_college: "", event: id },
+        ...Array.from({ length: 1 }, () => ({
+          name: "",
+          phone: null,
+          college: "",
+          event: id,
+        })),
       ]);
     }
   };
@@ -349,9 +222,11 @@ const Register = () => {
                       Member {index + 1}
                     </h2>
                     <FormElement
-                      member={members[index]}
+                      member={member}
                       handleChange={handleChange}
                       index={index}
+                      memberCount={memberCount}
+                      name={names[index]}
                     />
                   </React.Fragment>
                 ))}

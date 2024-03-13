@@ -9,9 +9,9 @@ const DayEvent = ({ day, eventsData }) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <span
-        className="text-white text-5xl p-2"
+    <div className="w-full flex flex-col items-center justify-center px-4">
+      <h1
+        className="text-white text-5xl my-10 p-2"
         style={{
           fontFamily: "Rundeck",
           background: "-webkit-linear-gradient(white, #38495a)",
@@ -20,24 +20,24 @@ const DayEvent = ({ day, eventsData }) => {
         }}
       >
         {events[day]} Events
-      </span>
+      </h1>
       <hr
-        className="w-[80%] h-[1px] border-none my-5"
+        className="w-full h-[1px] border-none my-5"
         style={{
           background:
             "linear-gradient(to left, transparent, rgba(255,255,255,0.1), transparent)",
         }}
       />
-      <div className="w-full p-5 flex gap-10 overflow-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full">
         {eventsData &&
           eventsData.map((data, index) => (
-            <div key={`day1-${index}`}>
+            <div key={`day-${index}`} className="w-full flex justify-center">
               <EventCard data={data} />
             </div>
           ))}
       </div>
       <hr
-        className="w-[80%] h-[1px] border-none my-5"
+        className="w-full h-[1px] border-none my-5"
         style={{
           background:
             "linear-gradient(to left, transparent, rgba(255,255,255,0.1), transparent)",
